@@ -48,9 +48,12 @@
       </div>
     </div>
 
- <p class="text-sm text-gray-500 mt-1 text-center">
-  <button id="goToRegister" class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-medium">
-    Sign Up
+  <!-- ===== Sign Up button (opens Sign In modal) ===== -->
+<p class="text-sm text-gray-500 mt-1 text-center">
+  <button
+    id="openSignIn"
+    class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-medium">
+    Sign In
   </button>
 </p>
 
@@ -766,109 +769,155 @@
 </script>
 
 
+
+
+
+
+<!-- ======= Sign In Modal ======= -->
+  <div id="signInModal"
+       class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 p-4">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
+      <button id="closeSignIn"
+              class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Sign In</h2>
+
+      <form id="signInForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+          <input type="email" id="email" placeholder="Enter your email"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 text-black">
+        </div>
+        <div>
+          <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+          <input type="password" id="password" placeholder="Enter your password"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 text-black">
+        </div>
+        <button type="submit"
+                class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
+          Sign In
+        </button>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-4 text-center">
+        Don’t have an account?
+        <a href="#" id="goToRegisterLink" class="text-pink-500 hover:underline">Register</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ======= Register Modal ======= -->
+  <div id="registerModal"
+       class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 p-4">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
+      <button id="closeRegister"
+              class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+      <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
+
+      <form id="registerForm" class="space-y-4">
+        <div>
+          <label for="regName" class="block text-gray-700 font-semibold mb-2">Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your name"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 text-black">
+        </div>
+        <div>
+          <label for="regEmail" class="block text-gray-700 font-semibold mb-2">Email</label>
+          <input type="email" id="regEmail" placeholder="Enter your email"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 text-black">
+        </div>
+        <div>
+          <label for="regPassword" class="block text-gray-700 font-semibold mb-2">Password</label>
+          <input type="password" id="regPassword" placeholder="Enter your password"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500 text-black">
+        </div>
+        <button type="submit"
+                class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
+          Register
+        </button>
+      </form>
+
+      <p class="text-sm text-gray-500 mt-4 text-center">
+        Already have an account?
+        <a href="#" id="goToSignIn" class="text-pink-500 hover:underline">Sign In</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ======= Buttons to open modals ======= -->
+  <div class="flex justify-center gap-4 mt-12">
+    <button id="openSignIn"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-medium">
+      Open Sign In
+    </button>
+    <button id="openRegister"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-medium">
+      Open Register
+    </button>
+  </div>
+
+  <!-- ======= JS ======= -->
+  <script>
+    // === Grab elements ===
+    const signInModal = document.getElementById("signInModal");
+    const registerModal = document.getElementById("registerModal");
+
+    const openSignInBtn = document.getElementById("openSignIn");
+    const openRegisterBtn = document.getElementById("openRegister");
+
+    const closeSignIn = document.getElementById("closeSignIn");
+    const closeRegister = document.getElementById("closeRegister");
+
+    const goToRegisterLink = document.getElementById("goToRegisterLink");
+    const goToSignIn = document.getElementById("goToSignIn");
+
+    const signInForm = document.getElementById("signInForm");
+    const registerForm = document.getElementById("registerForm");
+
+    // === Open modals ===
+    openSignInBtn.addEventListener("click", () => {
+      signInModal.classList.remove("hidden");
+    });
+
+    openRegisterBtn.addEventListener("click", () => {
+      registerModal.classList.remove("hidden");
+    });
+
+    // === Switch between modals ===
+    goToRegisterLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      signInModal.classList.add("hidden");
+      registerModal.classList.remove("hidden");
+    });
+
+    goToSignIn.addEventListener("click", (e) => {
+      e.preventDefault();
+      registerModal.classList.add("hidden");
+      signInModal.classList.remove("hidden");
+    });
+
+    // === Close modals ===
+    closeSignIn.addEventListener("click", () => signInModal.classList.add("hidden"));
+    closeRegister.addEventListener("click", () => registerModal.classList.add("hidden"));
+
+    // Close when clicking outside the content
+    window.addEventListener("click", (e) => {
+      if (e.target === signInModal) signInModal.classList.add("hidden");
+      if (e.target === registerModal) registerModal.classList.add("hidden");
+    });
+
+    // === Demo submit handlers ===
+    signInForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Signed in with: " + document.getElementById("email").value);
+      signInModal.classList.add("hidden");
+    });
+
+    registerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Registered with: " + document.getElementById("regEmail").value);
+      registerModal.classList.add("hidden");
+    });
+  </script>
+ 
+
 </body>
 </html>
-
-<!-- ================= Sign In Modal ================= -->
-<div id="signInModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
-  <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
-    <button id="closeSignIn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Sign In</h2>
-
-    <form id="signInForm" class="space-y-4">
-      <div>
-        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" 
-               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
-      </div>
-      <div>
-        <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" 
-               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
-      </div>
-      <button type="submit" 
-              class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
-        Sign In
-      </button>
-    </form>
-
-    <p class="text-sm text-gray-500 mt-4 text-center">
-      Don't have an account? <a href="#" class="text-pink-500 hover:underline">Sign Up</a>
-    </p>
-  </div>
-</div>
-<!-- ================= Register Modal ================= -->
-<div id="registerModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
-  <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
-    <button id="closeRegister" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
-
-    <form id="registerForm" class="space-y-4">
-      <div>
-        <label for="regName" class="block text-gray-700 font-semibold mb-2">Full Name</label>
-        <input type="text" id="regName" placeholder="Enter your name" 
-               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
-      </div>
-      <div>
-        <label for="regEmail" class="block text-gray-700 font-semibold mb-2">Email</label>
-        <input type="email" id="regEmail" placeholder="Enter your email" 
-               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
-      </div>
-      <div>
-        <label for="regPassword" class="block text-gray-700 font-semibold mb-2">Password</label>
-        <input type="password" id="regPassword" placeholder="Enter your password" 
-               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
-      </div>
-      <button type="submit" 
-              class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
-        Register
-      </button>
-    </form>
-
-    <p class="text-sm text-gray-500 mt-4 text-center">
-      Already have an account? <a href="#" id="goToSignIn" class="text-pink-500 hover:underline">Sign In</a>
-    </p>
-  </div>
-</div>
-
-
-<script>
-  // Open Register modal from Sign In
-  const goToRegister = document.getElementById("goToRegister");
-  const registerModal = document.getElementById("registerModal");
-  const closeRegister = document.getElementById("closeRegister");
-  const goToSignIn = document.getElementById("goToSignIn");
-
-  goToRegister.addEventListener("click", (e) => {
-    e.preventDefault();
-    signInModal.classList.add("hidden");
-    registerModal.classList.remove("hidden");
-  });
-
-  // Close Register modal
-  closeRegister.addEventListener("click", () => {
-    registerModal.classList.add("hidden");
-  });
-
-  // Switch back to Sign In from Register
-  goToSignIn.addEventListener("click", (e) => {
-    e.preventDefault();
-    registerModal.classList.add("hidden");
-    signInModal.classList.remove("hidden");
-  });
-
-  // Close modal on outside click
-  window.addEventListener("click", (e) => {
-    if (e.target === registerModal) {
-      registerModal.classList.add("hidden");
-    }
-  });
-
-  // Demo form submission for Register
-  const registerForm = document.getElementById("registerForm");
-  registerForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    alert("Registered with email: " + document.getElementById("regEmail").value);
-    registerModal.classList.add("hidden");
-  });
-</script>
