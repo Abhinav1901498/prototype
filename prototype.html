@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cohere Chatbot Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-black text-white font-sans">
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-black/50 backdrop-blur-md px-6 py-2 flex justify-between items-center">
+  <div class="text-2xl font-bold text-pink-400">AI Health Chatbot</div>
+
+   <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-6 text-lg text-white">
+    <li><a href="#home" class="hover:text-pink-400">Home</a></li>
+    <li><a href="#about" class="hover:text-pink-400">About</a></li>
+    <li><a href="#chatbox" class="hover:text-pink-400">Chatbot</a></li>
+    <li><a href="#photo-detection" class="hover:text-pink-400">Photo Detection</a></li>
+    <li><a href="#services" class="hover:text-pink-400">Services</a></li>
+    <li><a href="#hotspot-map" class="hover:text-pink-400">Hotspot Map</a></li>
+    <li><a href="#mental-wellness" class="hover:text-pink-400">Mental Wellness</a></li>
+    <li><a href="#emergency" class="hover:text-pink-400">Emergency 🚨</a></li>
+  </ul>
+
+  <!-- Right Buttons -->
+  <div class="flex gap-2 items-center">
+    <!-- Languages dropdown -->
+    <div class="relative">
+      <button id="langBtn" class="bg-yellow-500 px-5 py-2 rounded-full hover:bg-pink-600 text-black font-medium flex items-center">
+        Languages
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <div id="langMenu" class="absolute right-0 mt-2 w-44 bg-white text-gray-800 rounded-lg shadow-lg hidden">
+        <ul class="py-2">
+          <li><a href="#english" class="block px-4 py-2 hover:bg-gray-100">English</a></li>
+          <li><a href="#hindi" class="block px-4 py-2 hover:bg-gray-100">Hindi</a></li>
+          <li><a href="#marathi" class="block px-4 py-2 hover:bg-gray-100">Marathi</a></li>
+          <li><a href="#bengali" class="block px-4 py-2 hover:bg-gray-100">Bengali</a></li>
+          <li><a href="#tamil" class="block px-4 py-2 hover:bg-gray-100">Tamil</a></li>
+          <li><a href="#telugu" class="block px-4 py-2 hover:bg-gray-100">Telugu</a></li>
+          <li><a href="#kannada" class="block px-4 py-2 hover:bg-gray-100">Kannada</a></li>
+        </ul>
+      </div>
+    </div>
+
+ <p class="text-sm text-gray-500 mt-1 text-center">
+  <button id="goToRegister" class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full font-medium">
+    Sign Up
+  </button>
+</p>
+
+
+
+    <!-- Hamburger / Circle Menu Button (mobile) -->
+    <div class="md:hidden relative">
+      <button id="menuBtn" class="w-12 h-12 bg-pink-400 rounded-full flex items-center justify-center text-white text-2xl ml-2">
+        ☰
+      </button>
+
+      <ul id="circleMenu" class="absolute top-12 right-0 w-64 rounded-lg bg-black/80 flex flex-col items-center justify-center space-y-4 text-white text-lg hidden p-4">
+        <li><a href="#home" class="hover:text-pink-400">Home</a></li>
+        <li><a href="#about" class="hover:text-pink-400">About</a></li>
+        <li><a href="#chatbox" class="hover:text-pink-400">Chatbot</a></li>
+        <li><a href="#photo-detection" class="hover:text-pink-400">Photo Detection</a></li>
+        <li><a href="#services" class="hover:text-pink-400">Services</a></li>
+        <li><a href="#hotspot-map" class="hover:text-pink-400">Hotspot Map</a></li>
+        <li><a href="#mental-wellness" class="hover:text-pink-400">Mental Wellness</a></li>
+        <li><a href="#emergency" class="hover:text-pink-400">Emergency 🚨</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Hamburger toggle
+  const menuBtn = document.getElementById("menuBtn");
+  const circleMenu = document.getElementById("circleMenu");
+  menuBtn.addEventListener("click", () => circleMenu.classList.toggle("hidden"));
+
+  // Language dropdown toggle
+  const langBtn = document.getElementById('langBtn');
+  const langMenu = document.getElementById('langMenu');
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langMenu.classList.toggle('hidden');
+  });
+  document.addEventListener('click', () => langMenu.classList.add('hidden'));
+</script>
+
+
+
+<!-- Hero Section (unchanged) -->
+<!-- Hero Section -->
+<section id="home" class="flex flex-col md:flex-row items-center justify-between px-10 pt-28 pb-16 min-h-screen relative bg-cover bg-center"
+         style="background-image:url('https://cdn.prod.website-files.com/645a5c190d742621796eedd1/66a73f2eeafe835382306457_66067cfc0407f044de1b74c0_healthcare-ai-chatbot-monitoring-health-status.jpeg');">
+  <div class="absolute inset-0 bg-black/70"></div>
+  <div class="relative max-w-xl space-y-6 z-10 ml-10 md:ml-40">
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white">
+      AI Chatbot <br><span class="text-pink-400">for Public Health Awareness</span>
+    </h1>
+    <p class="text-gray-300 text-lg">
+      Stay informed and protect your community with our AI-powered chatbot, providing instant disease information, symptoms guidance, and preventive measures.
+    </p>
+
+    <!-- Social Links -->
+    <div class="flex space-x-4 pb-4">
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="space-x-3 pb-4">
+      <a href="#about" class="bg-pink-500 hover:bg-pink-600 px-5 py-2.5 rounded-full">Learn About the Chatbot</a>
+   </div>
+  </div>
+</section>
+
+<!-- Chatbot Modal (without bot input or messages) -->
+<div id="chatbotModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
+  <div class="bg-white rounded-2xl p-6 max-w-3xl w-full relative">
+    <button id="closeChatbot" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+    <h2 class="text-2xl font-bold mb-4 text-center">AI Public Health Chatbot</h2>
+    
+    <!-- Chatbot Placeholder -->
+    <div class="border border-gray-300 rounded-lg p-4 h-96 flex items-center justify-center">
+      <p class="text-gray-500 text-center">The AI Public Health Chatbot interface will appear here.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Open Chatbot Modal
+  const demoBtn = document.getElementById("demoBtn");
+  const chatbotModal = document.getElementById("chatbotModal");
+  const closeChatbot = document.getElementById("closeChatbot");
+
+  demoBtn.addEventListener("click", () => {
+    chatbotModal.classList.remove("hidden");
+  });
+
+  closeChatbot.addEventListener("click", () => {
+    chatbotModal.classList.add("hidden");
+  });
+
+  // Close modal when clicking outside
+  window.addEventListener("click", (e) => {
+    if (e.target === chatbotModal) {
+      chatbotModal.classList.add("hidden");
+    }
+  });
+</script>
+
+
+
+
+
+
+<!-- About Us Section -->
+<section id="about" class="py-20 px-10 bg-gradient-to-r from-purple-800/70 to-pink-600/70 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+    <!-- Left: Text Content -->
+    <div class="space-y-6 text-white">
+      <h2 class="text-4xl font-bold">About Our AI Health Chatbot</h2>
+      <p class="text-xl text-gray-200 leading-relaxed">
+        Our AI-Driven Public Health Chatbot is designed to raise awareness and provide timely information about various diseases. 
+        It helps users identify symptoms, learn preventive measures, and access reliable health guidance instantly.
+      </p>
+      <p class="text-gray-300 leading-relaxed text-xl">
+        From common illnesses like Dengue and Malaria to critical updates about infectious diseases, our chatbot assists communities 
+        in staying informed and making proactive health decisions. It is accessible 24/7, making public health knowledge available anytime.
+      </p>
+
+      <!-- Button to Open Modal -->
+      <button id="learnMoreBtn" class="inline-block bg-pink-500 hover:bg-pink-600 px-6 py-3 rounded-full text-lg font-medium mt-4">
+        Learn More
+      </button>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="flex justify-center">
+      <img src="https://img.freepik.com/free-vector/healthcare-concept-illustration_114360-791.jpg" 
+           alt="AI Health Chatbot" 
+           class="rounded-2xl shadow-lg w-[90%] md:w-[80%]">
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="patientModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
+  <div class="bg-white rounded-2xl p-8 max-w-4xl w-full relative">
+    <button id="closeModal" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+    <h2 class="text-3xl font-bold mb-6 text-center">Patient / Disease Information</h2>
+
+    <!-- Expanded Disease Cards -->
+    <div class="grid md:grid-cols-1 gap-6">
+      <!-- Dengue -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition text-black">
+        <h3 class="font-semibold text-2xl mb-2 text-pink-600">Dengue</h3>
+        <p><strong>Symptoms:</strong> High fever, severe headache, pain behind the eyes, joint and muscle pain, nausea, vomiting, rash.</p>
+        <p><strong>Prevention:</strong> Use mosquito nets, eliminate standing water, wear long-sleeved clothing, use mosquito repellents.</p>
+        <p><strong>Treatment:</strong> No specific medicine; supportive care like hydration, rest, and fever management is recommended. Severe cases may need hospitalization.</p>
+        <p><strong>Additional Info:</strong> Dengue is caused by the dengue virus transmitted by Aedes mosquitoes. Early detection is crucial to avoid complications.</p>
+      </div>
+
+      <!-- Malaria -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition text-black">
+        <h3 class="font-semibold text-2xl mb-2 text-red-600">Malaria</h3>
+        <p><strong>Symptoms:</strong> Fever, chills, sweating, headache, nausea, fatigue, body aches.</p>
+        <p><strong>Prevention:</strong> Mosquito control, use of insecticide-treated bed nets, antimalarial prophylaxis when traveling to endemic areas, wearing protective clothing.</p>
+        <p><strong>Treatment:</strong> Antimalarial medications like chloroquine, artemisinin-based combination therapy (ACT), depending on type and region.</p>
+        <p><strong>Additional Info:</strong> Caused by Plasmodium parasites, transmitted by Anopheles mosquitoes. Prompt treatment prevents severe complications.</p>
+      </div>
+
+      <!-- COVID-19 -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition text-black">
+        <h3 class="font-semibold text-2xl mb-2 text-blue-600">COVID-19</h3>
+        <p><strong>Symptoms:</strong> Fever, cough, sore throat, shortness of breath, loss of smell/taste, fatigue, body aches.</p>
+        <p><strong>Prevention:</strong> Vaccination, mask-wearing, social distancing, hand hygiene, avoiding crowded places.</p>
+        <p><strong>Treatment:</strong> Mild cases: rest, hydration, and over-the-counter medication. Severe cases: hospitalization, oxygen therapy, antivirals, or other supportive care.</p>
+        <p><strong>Additional Info:</strong> Caused by SARS-CoV-2 virus. Early detection, isolation, and vaccination are key to controlling spread.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal logic
+  const learnMoreBtn = document.getElementById("learnMoreBtn");
+  const patientModal = document.getElementById("patientModal");
+  const closeModal = document.getElementById("closeModal");
+
+  learnMoreBtn.addEventListener("click", () => {
+    patientModal.classList.remove("hidden");
+  });
+
+  closeModal.addEventListener("click", () => {
+    patientModal.classList.add("hidden");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === patientModal) {
+      patientModal.classList.add("hidden");
+    }
+  });
+</script>
+
+
+  
+
+  <!-- Chatbox -->
+<section id="chatbox" class="px-6 py-20 flex justify-center bg-white/80 backdrop-blur-md">
+  <div class="bg-white text-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-2xl">
+    <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">AI Health Chatbot</h2>
+    
+    <!-- Chat Form -->
+    <form id="chatForm" class="space-y-6">
+      <div>
+        <label for="userInput" class="block font-semibold mb-2">Type or speak:</label>
+        <input type="text" id="userInput" placeholder="Type or speak…" 
+               class="w-full border rounded-lg px-4 py-3" />
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <button type="submit" 
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg">
+          Send
+        </button>
+        <button type="button" id="micBtn"
+                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-3 rounded-lg">
+          🎤 Speak
+        </button>
+      </div>
+    </form>
+
+    <!-- Response -->
+    <div id="responseContainer" class="mt-6 p-4 bg-gray-100 border-l-4 border-indigo-600 rounded-lg hidden">
+      <h3 class="font-bold text-indigo-600">Response:</h3>
+      <p id="response" class="mt-2"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const chatForm = document.getElementById('chatForm');
+  const userInput = document.getElementById('userInput');
+  const responseContainer = document.getElementById('responseContainer');
+  const responseText = document.getElementById('response');
+  const micBtn = document.getElementById('micBtn');
+
+  // Handle form submit
+  chatForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const userMessage = userInput.value.trim();
+    if (!userMessage) return;
+
+    // Dummy AI response for frontend only
+    responseText.textContent = "This is a dummy response for: " + userMessage;
+    responseContainer.classList.remove('hidden');
+    userInput.value = '';
+  });
+
+  // Optional: Voice input using Web Speech API
+  micBtn.addEventListener('click', () => {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Your browser does not support speech recognition.');
+      return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.start();
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      userInput.value = transcript;
+    };
+
+    recognition.onerror = (event) => {
+      console.error(event.error);
+    };
+  });
+</script>
+
+
+
+
+ <section id="photo-detection" class="py-20 bg-cyan-600">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-gray-100 mb-4">Photo Detection</h2>
+    <p class="text-gray-200 mb-8">
+      Upload an image or take a photo to let our AI analyse it for potential health or environmental clues.
+    </p>
+
+    <!-- Upload Card -->
+    <div class="bg-white p-10 rounded-4xl shadow-md">
+      <form id="photoForm" class="flex flex-col items-center space-y-6">
+        <!-- File upload -->
+        <input type="file"
+               id="photoInput"
+               accept="image/*"
+               class="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
+
+        <!-- Camera Button -->
+        <button id="cameraBtn"
+                type="button"
+                class="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full">
+          <!-- Camera Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 7h4l1-2h8l1 2h4v13H3V7z" />
+            <circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Open Camera
+        </button>
+
+        <!-- Detect Button -->
+        <button type="submit"
+                class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full">
+          Detect
+        </button>
+      </form>
+
+      <!-- Camera Preview -->
+      <div id="cameraContainer" class="mt-6 hidden">
+        <video id="cameraStream" autoplay playsinline class="mx-auto rounded-lg max-h-64"></video>
+        <button id="captureBtn"
+                type="button"
+                class="mt-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full">
+          Capture
+        </button>
+      </div>
+
+      <!-- Image Preview & Result -->
+      <div id="previewContainer" class="mt-8 hidden">
+        <img id="previewImage" alt="Uploaded or Captured photo"
+             class="max-h-64 rounded-lg mx-auto">
+        <p id="resultText" class="mt-4 text-lg text-gray-700 font-medium"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('photoForm');
+  const input = document.getElementById('photoInput');
+  const previewContainer = document.getElementById('previewContainer');
+  const previewImage = document.getElementById('previewImage');
+  const resultText = document.getElementById('resultText');
+
+  const cameraBtn = document.getElementById('cameraBtn');
+  const cameraContainer = document.getElementById('cameraContainer');
+  const cameraStream = document.getElementById('cameraStream');
+  const captureBtn = document.getElementById('captureBtn');
+
+  let stream;
+
+  // Show preview when a file is selected
+  input.addEventListener('change', () => {
+    const file = input.files[0];
+    if (file) {
+      previewImage.src = URL.createObjectURL(file);
+      previewContainer.classList.remove('hidden');
+      resultText.textContent = '';
+    }
+  });
+
+  // Open camera
+  cameraBtn.addEventListener('click', async () => {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      cameraStream.srcObject = stream;
+      cameraContainer.classList.remove('hidden');
+      previewContainer.classList.add('hidden');
+    } catch (err) {
+      alert('Unable to access camera: ' + err.message);
+    }
+  });
+
+  // Capture image from video
+  captureBtn.addEventListener('click', () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = cameraStream.videoWidth;
+    canvas.height = cameraStream.videoHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(cameraStream, 0, 0, canvas.width, canvas.height);
+    previewImage.src = canvas.toDataURL('image/png');
+    previewContainer.classList.remove('hidden');
+
+    // Stop camera after capture
+    stream.getTracks().forEach(track => track.stop());
+    cameraContainer.classList.add('hidden');
+    resultText.textContent = '';
+  });
+
+  // Submit form (demo only)
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    resultText.textContent = '🔍 Analysing photo... (demo result)';
+  });
+</script>
+ 
+
+ <!-- Services -->
+  <section id="services" class="py-20 bg-black/60 backdrop-blur-md">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold">Our Services</h2>
+      <p class="text-gray-300 mt-2 text-xl">Unlock smarter conversations with our next-gen AI chatbots.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 px-10">
+      <div class="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-bold mb-3">Ayushman Bharat Yojana</h3>
+        <p class='text-xl'> 1. Up to ₹5 lakh per family per year for secondary & tertiary care hospitalization <br>
+         2. Covers more than 1,500 medical procedures (surgeries, treatments, follow-ups, etc.)</p>
+      </div>
+      <div class="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
+        <p class='text-xl'>AI disease prediction” usually means a round-the-clock help system for an app or platform that uses artificial intelligence to predict or screen diseases.</p>
+      </div>
+      <div class="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Analytics & Insights</h3>
+        <p>Get detailed analytics of conversations to improve strategy.</p>
+      </div>
+    </div>
+  </section>
+
+ <!-- HOTSPOT MAP -->
+<section id="hotspot-map" class="py-20 bg-gray-100">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">
+      Disease Hotspot Map
+    </h2>
+    <p class="text-gray-600 mb-8 text-center">
+      Visualize areas with high patient counts and disease outbreaks to assist
+      health and government teams.
+    </p>
+
+    <!-- Map Container -->
+    <div id="map" class="w-full h-96 rounded-xl shadow-lg"></div>
+
+    <!-- Legend -->
+    <div class="mt-4 flex justify-center space-x-6 text-sm">
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-green-500"></span>
+        <span class='text-black text-xl font-bold'>Low</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-yellow-500"></span>
+        <span class='text-black text-xl font-bold'>Medium</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="w-4 h-4 rounded-full bg-red-600"></span>
+        <span class='text-black text-xl font-bold'>High</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Leaflet CSS & JS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  // --- Example data (replace with API data if available) ---
+  const hotspots = [
+    { lat: 28.6139, lng: 77.209, cases: 50, name: "Delhi" },
+    { lat: 19.076, lng: 72.8777, cases: 80, name: "Mumbai" },
+    { lat: 12.9716, lng: 77.5946, cases: 30, name: "Bengaluru" },
+    { lat: 22.5726, lng: 88.3639, cases: 15, name: "Kolkata" }
+  ];
+
+  // --- Initialize map ---
+  const map = L.map("map").setView([22.9734, 78.6569], 5); // India center
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap contributors"
+  }).addTo(map);
+
+  // --- Color logic based on case count ---
+  function getColor(cases) {
+    if (cases > 70) return "#dc2626"; // red
+    if (cases > 30) return "#facc15"; // yellow
+    return "#22c55e"; // green
+  }
+
+  // --- Draw circles ---
+  hotspots.forEach((spot) => {
+    L.circle([spot.lat, spot.lng], {
+      color: getColor(spot.cases),
+      fillColor: getColor(spot.cases),
+      fillOpacity: 0.5,
+      radius: spot.cases * 300
+    })
+      .addTo(map)
+      .bindPopup(`<strong>${spot.name}</strong><br>Cases: ${spot.cases}`);
+  });
+</script>
+
+
+
+
+
+
+
+
+
+<!-- 🌱 MENTAL WELLNESS & AI COUNSELOR -->
+<section id="mental-wellness" class="py-16 bg-gray-100 via-cyan-50 to-blue-100">
+  <div class="max-w-6xl mx-auto px-6">
+    
+    <!-- Title -->
+    <h2 class="text-4xl font-extrabold text-center text-red-500 mb-4">
+      🧘 Mental Wellness
+    </h2>
+    <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">
+      Track your emotions, relax with breathing, or read uplifting quotes for support.
+    </p>
+
+    <!-- === Top Tools (Breathing + Quotes) === -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+      <!-- Breathing -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition">
+        <div class="text-5xl mb-4">🌿</div>
+        <h3 class="text-xl font-bold mb-2">Mindful Breathing</h3>
+        <p class="text-gray-600 mb-4">A quick 5-second inhale/exhale cycle to calm your thoughts.</p>
+        <button id="startBreathing" class="bg-teal-500 hover:bg-teal-600 text-white px-5 py-2 rounded-full">
+          Start
+        </button>
+        <p id="breathingText" class="mt-4 text-lg font-semibold text-teal-700 hidden"></p>
+      </div>
+
+      <!-- Quotes -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 text-center hover:scale-105 transition">
+        <div class="text-5xl mb-4">💬</div>
+        <h3 class="text-xl font-bold mb-2">Positive Quote</h3>
+        <p class="text-gray-600 mb-4">Click to get an uplifting thought for your day.</p>
+        <button id="showQuote" class="bg-cyan-500 hover:bg-cyan-600 text-white px-5 py-2 rounded-full">
+          Show Quote
+        </button>
+        <p id="quoteText" class="mt-4 italic text-gray-700 hidden"></p>
+      </div>
+    </div>
+
+    <!-- === Mood & Stress === -->
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8 mb-14">
+      <h3 class="text-2xl font-bold text-center text-blue-700 mb-6">🌈 Mood & Stress Check</h3>
+
+      <!-- Mood -->
+      <label class="block text-lg font-semibold text-gray-700 mb-3 text-center">How are you feeling?</label>
+      <div class="flex justify-center gap-6 text-4xl mb-6">
+        <button onclick="setMood('😊 Happy')" class="hover:scale-125">😊</button>
+        <button onclick="setMood('😟 Stressed')" class="hover:scale-125">😟</button>
+        <button onclick="setMood('😴 Tired')" class="hover:scale-125">😴</button>
+        <button onclick="setMood('😢 Sad')" class="hover:scale-125">😢</button>
+        <button onclick="setMood('😃 Excited')" class="hover:scale-125">😃</button>
+      </div>
+
+      <!-- Stress -->
+      <label for="stressRange" class="block text-lg font-semibold text-gray-700 mb-2">Stress Level</label>
+      <input id="stressRange" type="range" min="0" max="10" value="5"
+        class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+      <p id="stressValue" class="text-center text-blue-600 font-medium mt-3">Stress Level: 5/10</p>
+
+      <!-- Tip -->
+      <div id="tipsBox" class="bg-blue-50 p-4 rounded-xl shadow-inner text-center mt-6 hidden">
+        <h4 class="text-lg font-bold text-blue-700 mb-2">💡 Wellness Tip</h4>
+        <p id="tipText" class="text-gray-700"></p>
+      </div>
+    </div>
+
+    <!-- === Helpline === -->
+    <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-md p-6">
+      <h3 class="text-xl font-semibold text-blue-700 mb-4">📞 Counseling Helpline Numbers</h3>
+      <ul class="text-gray-700 space-y-2">
+        <li><strong>India Mental Health Helpline:</strong> 1800-599-0019</li>
+        <li><strong>AASRA Helpline:</strong> +91-98204-66726</li>
+        <li><strong>NIMHANS Helpline:</strong> 080-4611-0007</li>
+        <li><strong>KIRAN (Govt. of India):</strong> 1800-599-0019</li>
+      </ul>
+      <p class="text-sm text-gray-500 mt-3">⚠ In case of severe distress, reach out to these official helplines.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // --- Breathing Exercise ---
+  const breathingBtn = document.getElementById("startBreathing");
+  const breathingText = document.getElementById("breathingText");
+  let breathingInterval;
+  breathingBtn.addEventListener("click", () => {
+    clearInterval(breathingInterval);
+    breathingText.classList.remove("hidden");
+    let state = "Inhale", seconds = 5;
+    breathingText.textContent = `${state}... ${seconds}`;
+    breathingInterval = setInterval(() => {
+      seconds--;
+      if (seconds <= 0) {
+        state = state === "Inhale" ? "Exhale" : "Inhale";
+        seconds = 5;
+      }
+      breathingText.textContent = `${state}... ${seconds}`;
+    }, 1000);
+  });
+
+  // --- Quotes ---
+  const quotes = [
+    "You are stronger than you think.",
+    "Breathe in peace, breathe out stress.",
+    "Small steps every day lead to big change.",
+    "Your feelings are valid — give yourself kindness.",
+    "Progress, not perfection, is what matters."
+  ];
+  document.getElementById("showQuote").addEventListener("click", () => {
+    const q = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quoteText").textContent = `"${q}"`;
+    document.getElementById("quoteText").classList.remove("hidden");
+  });
+
+  // --- Mood & Stress ---
+  const tips = {
+    "😊 Happy": "Keep spreading positivity! Share your joy today.",
+    "😟 Stressed": "Pause and breathe deeply for a few minutes.",
+    "😴 Tired": "Take a short nap or stretch your body.",
+    "😢 Sad": "Talk to someone close, or listen to soft music.",
+    "😃 Excited": "Use your energy to do something fun!"
+  };
+  function setMood(mood) {
+    document.getElementById("tipsBox").classList.remove("hidden");
+    document.getElementById("tipText").innerText = tips[mood] || "Take care of yourself!";
+  }
+  const stressRange = document.getElementById("stressRange");
+  const stressValue = document.getElementById("stressValue");
+  stressRange.addEventListener("input", function () {
+    stressValue.textContent = `Stress Level: ${this.value}/10`;
+    if (this.value >= 7) {
+      document.getElementById("tipsBox").classList.remove("hidden");
+      document.getElementById("tipText").innerText =
+        "⚠️ High stress detected! Pause, breathe, or talk to a counselor.";
+    }
+  });
+</script>
+
+
+
+ 
+ <!-- Emergency Section -->
+<section id="emergency" class="py-20 px-10 bg-gradient-to-r from-red-600/80 to-pink-500/80 backdrop-blur-md text-white">
+  <div class="max-w-6xl mx-auto text-center space-y-8">
+    <h2 class="text-4xl font-bold mb-4">🚨 Emergency Assistance</h2>
+    <p class="text-lg text-gray-100 max-w-3xl mx-auto">
+      In case of Health Emergencies related to infectious Diseases or severe Symptoms, get immediate help. 
+      Our AI chatbot can guide you on next steps and connect you to the Nearest Healthcare Facility.
+    </p>
+
+    <!-- Emergency Button -->
+    <button id="emergencyBtn" class="bg-white text-red-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">
+      🚨 Emergency
+    </button>
+
+    <!-- Nearest Hospital Modal -->
+    <div id="hospitalModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
+      <div class="bg-white rounded-2xl p-6 max-w-3xl w-full relative">
+        <button id="closeHospital" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+        <h2 class="text-2xl font-bold mb-4 text-center">Nearest Hospitals & Helpline</h2>
+        <div id="hospitalList" class="text-gray-800 space-y-4">
+          <p>Fetching nearest hospitals...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const emergencyBtn = document.getElementById("emergencyBtn");
+  const hospitalModal = document.getElementById("hospitalModal");
+  const closeHospital = document.getElementById("closeHospital");
+  const hospitalList = document.getElementById("hospitalList");
+
+  emergencyBtn.addEventListener("click", () => {
+    hospitalModal.classList.remove("hidden");
+
+    // Use geolocation to get user position
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        // Example: Static nearest hospitals (replace with API for real data)
+        hospitalList.innerHTML = `
+          <p>Nearest Hospital 1: City Hospital, 2 km away - Helpline: 108</p>
+          <p>Nearest Hospital 2: General Health Center, 3.5 km away - Helpline: 108</p>
+          <p>Nearest Hospital 3: Community Clinic, 5 km away - Helpline: 108</p>
+          <p>Your Location: Lucknow </p>
+        `;
+      }, (error) => {
+        hospitalList.innerHTML = "<p>Unable to fetch location. Please enable location services.</p>";
+      });
+    } else {
+      hospitalList.innerHTML = "<p>Geolocation is not supported by your browser.</p>";
+    }
+  });
+
+  closeHospital.addEventListener("click", () => {
+    hospitalModal.classList.add("hidden");
+  });
+
+  // Close modal when clicking outside
+  window.addEventListener("click", (e) => {
+    if (e.target === hospitalModal) {
+      hospitalModal.classList.add("hidden");
+    }
+  });
+</script>
+
+
+</body>
+</html>
+
+<!-- ================= Sign In Modal ================= -->
+<div id="signInModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
+  <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
+    <button id="closeSignIn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Sign In</h2>
+
+    <form id="signInForm" class="space-y-4">
+      <div>
+        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" 
+               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+      </div>
+      <div>
+        <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" 
+               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+      </div>
+      <button type="submit" 
+              class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
+        Sign In
+      </button>
+    </form>
+
+    <p class="text-sm text-gray-500 mt-4 text-center">
+      Don't have an account? <a href="#" class="text-pink-500 hover:underline">Sign Up</a>
+    </p>
+  </div>
+</div>
+<!-- ================= Register Modal ================= -->
+<div id="registerModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50 overflow-auto p-4">
+  <div class="bg-white rounded-2xl p-8 max-w-md w-full relative">
+    <button id="closeRegister" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-3xl font-bold">&times;</button>
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Register</h2>
+
+    <form id="registerForm" class="space-y-4">
+      <div>
+        <label for="regName" class="block text-gray-700 font-semibold mb-2">Full Name</label>
+        <input type="text" id="regName" placeholder="Enter your name" 
+               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+      </div>
+      <div>
+        <label for="regEmail" class="block text-gray-700 font-semibold mb-2">Email</label>
+        <input type="email" id="regEmail" placeholder="Enter your email" 
+               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+      </div>
+      <div>
+        <label for="regPassword" class="block text-gray-700 font-semibold mb-2">Password</label>
+        <input type="password" id="regPassword" placeholder="Enter your password" 
+               class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+      </div>
+      <button type="submit" 
+              class="w-full bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-lg font-medium">
+        Register
+      </button>
+    </form>
+
+    <p class="text-sm text-gray-500 mt-4 text-center">
+      Already have an account? <a href="#" id="goToSignIn" class="text-pink-500 hover:underline">Sign In</a>
+    </p>
+  </div>
+</div>
+
+
+<script>
+  // Open Register modal from Sign In
+  const goToRegister = document.getElementById("goToRegister");
+  const registerModal = document.getElementById("registerModal");
+  const closeRegister = document.getElementById("closeRegister");
+  const goToSignIn = document.getElementById("goToSignIn");
+
+  goToRegister.addEventListener("click", (e) => {
+    e.preventDefault();
+    signInModal.classList.add("hidden");
+    registerModal.classList.remove("hidden");
+  });
+
+  // Close Register modal
+  closeRegister.addEventListener("click", () => {
+    registerModal.classList.add("hidden");
+  });
+
+  // Switch back to Sign In from Register
+  goToSignIn.addEventListener("click", (e) => {
+    e.preventDefault();
+    registerModal.classList.add("hidden");
+    signInModal.classList.remove("hidden");
+  });
+
+  // Close modal on outside click
+  window.addEventListener("click", (e) => {
+    if (e.target === registerModal) {
+      registerModal.classList.add("hidden");
+    }
+  });
+
+  // Demo form submission for Register
+  const registerForm = document.getElementById("registerForm");
+  registerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Registered with email: " + document.getElementById("regEmail").value);
+    registerModal.classList.add("hidden");
+  });
+</script>
